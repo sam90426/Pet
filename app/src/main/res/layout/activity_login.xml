@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.sam.pet.AccountView.Login">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/loginbanner"
+        android:layout_weight="1"></LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/loginbanner2"
+        android:layout_weight="1"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1">
+            <EditText
+                android:id="@+id/loginname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:windowSoftInputMode="adjustUnspecified|stateHidden"
+                android:background="@drawable/border"
+                android:padding="15dp"
+                android:textSize="14sp"
+                android:hint="手机/E-mail"
+                android:inputType="phone"
+                android:maxLength="11"
+                android:singleLine="true"/>
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border"
+                android:windowSoftInputMode="adjustUnspecified|stateHidden"
+                android:inputType="textPassword"
+                android:padding="15dp"
+                android:textSize="14sp"
+                android:hint="6-12位数字或字母"
+                android:maxLength="12"
+                android:singleLine="true"/>
+
+            <Button
+                android:id="@+id/loginbtn"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/border"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#ff0000"
+                android:textSize="20sp"
+                android:text="登   录"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:layout_weight="2"
+            android:paddingTop="20dp"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/registerbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="40dp"
+                android:text="注册"
+                android:textColor="#ff0000"
+                android:textSize="16sp"
+                android:background="@mipmap/bone"/>
+            <Button
+                android:id="@+id/findbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:text="找回"
+                android:textColor="#ff0000"
+                android:textSize="16sp"
+                android:background="@mipmap/bone" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
