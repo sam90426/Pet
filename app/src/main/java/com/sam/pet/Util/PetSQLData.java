@@ -1,6 +1,7 @@
 package com.sam.pet.Util;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -10,11 +11,12 @@ import android.database.sqlite.SQLiteDatabase;
  * 该类为自定义的sqlite类
  */
 public class PetSQLData {
-    public static SQLiteDatabase db;
+    private static SQLiteDatabase db;
+
 
     //region 初始化数据库
     private static void InitData() {
-        db = SQLiteDatabase.openOrCreateDatabase("/data/data/com.sam.pet/databases/pet.db", null);
+        db = SQLiteDatabase.openOrCreateDatabase("pet.db", null);
         //创建表SQL语句(不存在则插入)
         String pet_table = "create table if not exists usertable(ID integer primary key autoincrement,PName text,PValue text)";
         //执行SQL语句
