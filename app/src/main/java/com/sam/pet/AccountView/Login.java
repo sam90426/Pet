@@ -1,6 +1,7 @@
 package com.sam.pet.AccountView;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 import com.sam.pet.R;
 import com.sam.pet.Util.HttpManager;
 import com.sam.pet.Util.MyInterFaceUrl;
+import com.sam.pet.Util.PetSQLData;
 import com.sam.pet.Util.ReturnParse;
 import com.sam.pet.Util.TGmd5;
 
@@ -66,7 +68,12 @@ public class Login extends Activity {
                             @Override
                             public void onSucesss(String json) {
                                 try {
-                                    System.out.print(ReturnParse.Parse(Login.this, json));
+                                     ContentValues cValue = new ContentValues();
+                                     cValue.put("UserID","2");
+                                     cValue.put("LoginName",LoginName);
+                                     cValue.put("PassWord",PassWord);
+                                     PetSQLData.InsertData(cValue);
+                                     System.out.print(ReturnParse.Parse(Login.this, json));
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }

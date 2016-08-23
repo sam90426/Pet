@@ -10,10 +10,10 @@ import android.database.sqlite.SQLiteDatabase;
  * 该类为自定义的sqlite类
  */
 public class PetSQLData {
-    private SQLiteDatabase db;
+    public static SQLiteDatabase db;
 
     //region 初始化数据库
-    private void InitData() {
+    private static void InitData() {
         db = SQLiteDatabase.openOrCreateDatabase("/data/data/com.sam.pet/databases/pet.db", null);
         //创建表SQL语句(不存在则插入)
         String pet_table = "create table if not exists usertable(ID integer primary key autoincrement,PName text,PValue text)";
@@ -28,16 +28,18 @@ public class PetSQLData {
     * cValue.put("sname","xiaoming");
     * cValue.put("snumber","01005");
     * */
-    public void InsertData(ContentValues cValue) {
+    public static void InsertData(ContentValues cValue) {
+        InitData();
         db.insert("stu_table", null, cValue);
     }
     //endregion
 
     //region 从数据库获取登录名
     /*
-    * cursorcount:0=登录名,1=密码
+    * cursorcount:0=UserID,1=登录名,2=密码
     * */
-    public String GetLoginName(int cursorcount) {
+    public static String GetValue(int cursorcount) {
+        InitData();
         String value="";
         Cursor cursor = db.query ("usertable",null,null,null,null,null,null);
         //判断游标是否为空
