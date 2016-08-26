@@ -72,7 +72,7 @@ public class Login extends Activity {
                                      cValue.put("UserID","2");
                                      cValue.put("LoginName",LoginName);
                                      cValue.put("PassWord",PassWord);
-                                     PetSQLData.InsertData(cValue);
+                                     PetSQLData.InsertData(Login.this,cValue);
                                      System.out.print(ReturnParse.Parse(Login.this, json));
                                 } catch (Exception e) {
                                     e.printStackTrace();

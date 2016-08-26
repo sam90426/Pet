@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 
 /**
  * Created by Administrator on 2016/8/19.
@@ -12,15 +13,15 @@ import android.database.sqlite.SQLiteDatabase;
  */
 public class PetSQLData {
     private static SQLiteDatabase db;
+    private static DBHelper dbHelper;
 
 
     //region 初始化数据库
-    private static void InitData() {
-        db = SQLiteDatabase.openOrCreateDatabase("pet.db", null);
-        //创建表SQL语句(不存在则插入)
-        String pet_table = "create table if not exists usertable(ID integer primary key autoincrement,PName text,PValue text)";
-        //执行SQL语句
-        db.execSQL(pet_table);
+    private static void InitData(Context context) {
+
+        //创建StuDBHelper对象
+         dbHelper = new DBHelper(context,"pet.db",null,1);
+
     }
     //endregion
 
@@ -30,9 +31,11 @@ public class PetSQLData {
     * cValue.put("sname","xiaoming");
     * cValue.put("snumber","01005");
     * */
-    public static void InsertData(ContentValues cValue) {
-        InitData();
-        db.insert("stu_table", null, cValue);
+    public static void InsertData(Context context,ContentValues cValue) {
+        InitData(context);
+        //获得到可写的数据库
+        db=dbHelper.getWritableDatabase();
+        db.insert("Pet_User", null, cValue);
     }
     //endregion
 
@@ -40,10 +43,12 @@ public class PetSQLData {
     /*
     * cursorcount:0=UserID,1=登录名,2=密码
     * */
-    public static String GetValue(int cursorcount) {
-        InitData();
+    public static String GetValue(Context context,int cursorcount) {
+        InitData(context);
+        //得到一个可读的SQLiteDatabase对象
+        db =dbHelper.getReadableDatabase();
         String value="";
-        Cursor cursor = db.query ("usertable",null,null,null,null,null,null);
+        Cursor cursor = db.query ("Pet_User",null,null,null,null,null,null);
         //判断游标是否为空
         if(cursor.moveToFirst()){
             //遍历游标

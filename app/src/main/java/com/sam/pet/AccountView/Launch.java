@@ -18,8 +18,8 @@ public class Launch extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_launch);
 
-        if(!PetSQLData.GetValue(0).isEmpty()&& Integer.parseInt(PetSQLData.GetValue(0))>0){
-            UserData.setUserID(Integer.parseInt(PetSQLData.GetValue(0)));
+        if(!PetSQLData.GetValue(Launch.this,0).isEmpty()&& Integer.parseInt(PetSQLData.GetValue(Launch.this,0))>0){
+            UserData.setUserID(Integer.parseInt(PetSQLData.GetValue(Launch.this,0)));
             startActivity(new Intent().setClass(Launch.this, Index.class));
             finish();
         }else{
