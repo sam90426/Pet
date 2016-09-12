@@ -23,12 +23,16 @@ public class ReturnParse {
         }
         //验证返回结果
         switch (state){//判断状态码
-            case 0://未登录
+            case 0://成功
 
                 Toast.makeText(context,msg,Toast.LENGTH_LONG).show();
                 break;
-            case 1:
+            case 1://非法操作
                 Toast.makeText(context,msg,Toast.LENGTH_LONG).show();
+                break;
+            case 2://未登录
+                break;
+            case 3://操作失败
                 break;
             default:
                 break;
