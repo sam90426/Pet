@@ -13,7 +13,6 @@ import android.widget.Toast;
 import com.sam.pet.R;
 import com.sam.pet.Util.HttpManager;
 import com.sam.pet.Util.MyInterFaceUrl;
-import com.sam.pet.Util.PetSQLData;
 import com.sam.pet.Util.ReturnParse;
 import com.sam.pet.Util.TGmd5;
 
@@ -72,7 +71,6 @@ public class Login extends Activity {
                                      cValue.put("UserID","2");
                                      cValue.put("LoginName",LoginName);
                                      cValue.put("PassWord",PassWord);
-                                     PetSQLData.InsertData(Login.this,cValue);
                                      System.out.print(ReturnParse.Parse(Login.this, json));
                                 } catch (Exception e) {
                                     e.printStackTrace();
